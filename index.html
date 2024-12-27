@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Kematian Balita</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prediksi Jumlah Kematian Balita</h1>
+    <form method="POST">
+        <label for="tahun">Masukkan Tahun:</label>
+        <input type="number" id="tahun" name="tahun" required>
+        <button type="submit">Prediksi</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Prediksi Jumlah Kematian Balita untuk Tahun {{ year }}:</h2>
+        <p>Rata-rata Prediksi: {{ prediction }}</p>
+        <p>Prediksi Interval 95%: {{ lower_bound }} - {{ upper_bound }}</p>
+    {% endif %}
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
